@@ -110,7 +110,7 @@ class Cell:
         y = self.row * gap
 
         if self.temp != 0 and self.value == 0:
-            text = fnt.render(str(self.temp), 1, (255,127,0))  # filled by user, orange color
+            text = fnt.render(str(self.temp), 1, (255, 127, 0))  # filled by user, orange color
             win.blit(text, (x+5, y+5))    # write the number in the corner; margins = 5
         elif not(self.value == 0):
             text = fnt.render(str(self.value), 1, (0, 0, 0))  # initial, black color
@@ -128,7 +128,7 @@ class Cell:
 
 
 def redraw_window(win, board, time, strikes):
-    win.fill((255,255,255)) # white background
+    win.fill((220,220,220)) # gray background
     
     # Draw time
     fnt = pygame.font.SysFont("comicsans", 40)
