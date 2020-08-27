@@ -6,7 +6,7 @@ def build_board():
     m = random.randint(0,10001)
 
     # retrieve specific line
-    model = linecache.getline(filename, 2)
+    model = linecache.getline(filename, m)
 
     # reshape to 9x9 matrix
     sudoko_board = [[], [], [],[], [], [],[], [], []]
