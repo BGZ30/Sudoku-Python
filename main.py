@@ -6,13 +6,13 @@ from GUI import Board, redraw_window
 pygame.font.init()
 
 def main():
-    win = pygame.display.set_mode((540,600))
+    win = pygame.display.set_mode((540,600))  
     pygame.display.set_caption("Sudoku")
-    board = Board(540, 540)
+    board = Board(540, 540)  # dimensions of the board
     key = None
     run = True
     start = time.time()
-    strikes = 0
+    strikes = 0  # wrong sign 'X' for rong answers
     
     while run:
 
@@ -50,7 +50,7 @@ def main():
                             print("Success")
                         else:
                             print("Wrong")
-                            strikes += 1
+                            strikes += 1  # wrong sign 'X'
                         key = None
 
                         if board.is_finished():
