@@ -1,4 +1,3 @@
-
 import pygame
 import time
 from GUI import Board, redraw_window
@@ -46,6 +45,10 @@ def main():
                     
                 if event.key == pygame.K_SPACE:
                     board.auto_solve()
+                    
+                if event.key == pygame.k_ESC:
+                    pygame.time.delay(500)
+                    pygame.quit()
                     
                 if event.key == pygame.K_RETURN:
                     i, j = board.selected
