@@ -21,5 +21,5 @@ Run main.py to play Sudoku.
 - [ ] Improve the GUI colors.
 - [ ] Add buttons to reset and new game.
 - [ ] Change the feedback strategy.
-- [ ] Add auto-solve method.
+- [x] Add auto-solve method.
 - [ ] Pop-up window when finshed succefully.
