@@ -16,8 +16,3 @@ def build_board():
             sudoko_board[r].append(int(model[c + 9*r]))
     
     return sudoko_board
-
-'''print()
-print(model)
-print(sudoko_board)
-'''

@@ -8,7 +8,7 @@ pygame.font.init()
 def main():
     win = pygame.display.set_mode((540,600))  
     pygame.display.set_caption("Sudoku")
-    board = Board(540, 540)  # dimensions of the board
+    board = Board(540, 540, win)  # dimensions of the board
     key = None
     run = True
     start = time.time()
@@ -43,6 +43,10 @@ def main():
                 if event.key == pygame.K_DELETE:
                     board.clear()
                     key = None
+                    
+                if event.key == pygame.K_SPACE:
+                    board.auto_solve()
+                    
                 if event.key == pygame.K_RETURN:
                     i, j = board.selected
                     if board.cells[i][j].temp != 0:
