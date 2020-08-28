@@ -1,6 +1,6 @@
 # Sudoku-Python
 
-[![Python 3.6](https://img.shields.io/badge/python-3.4+-blue.svg)](https://www.python.org/downloads/release/python)
+[![Python 3.7.3](https://img.shields.io/badge/python-3.7.3-blue.svg)](https://www.python.org/downloads/release/python)
 [![GitHub tag](https://img.shields.io/github/tag/BGZ30/Sudoku-Python.svg)](https://GitHub.com/BGZ30/Sudoku-Python/tags/)
 <!-- [![made-with-python](https://img.shields.io/badge/Made%20with-Python-3498db.svg)](https://www.python.org/) -->
 
@@ -10,7 +10,7 @@ Run main.py to play Sudoku.
 
 # Requirements 🛠️
 
-- Python 3.4+
+- Python 3.x
 - Pygame 
 
 # How to play 🎮
