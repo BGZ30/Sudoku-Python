@@ -1,6 +1,9 @@
 # Sudoku-Python
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-3498db.svg)](https://www.python.org/)
+<!-- [![release](https://badge.fury.io/gh/BGZ30%2FSudoku-Python%2Freleases%2Fv2.0.svg)](http://badge.fury.io/gh/BGZ30%2FSudoku-Python) -->
+
+
 
 This is a Sudoku game built using the Backtracking algorithm. It includes a GUI and can be played automatically by the computer or manully by the user.
 
