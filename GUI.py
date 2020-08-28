@@ -105,7 +105,7 @@ class Board:
                 self.cells[row][col].draw_change(self.win, True)
                 self.update_model()
                 pygame.display.update()
-                #pygame.time.delay(100)
+                pygame.time.delay(100)
 
                 if self.auto_solve():
                     return True
@@ -115,7 +115,7 @@ class Board:
                 self.update_model()
                 self.cells[row][col].draw_change(self.win, False)
                 pygame.display.update()
-                #pygame.time.delay(100)
+                pygame.time.delay(100)
 
         return False
 
@@ -140,7 +140,7 @@ class Cell:
         x = self.col * gap
         y = self.row * gap
 
-        if self.temp != 0 and self.value == 0:
+        if self.temp != 0 and self.value == 0:  
             text = fnt.render(str(self.temp), 1, (255, 127, 0))  # filled by user, orange color
             win.blit(text, (x+5, y+5))    # write the number in the corner; margins = 5
         elif not(self.value == 0):
