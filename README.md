@@ -1,17 +1,16 @@
 # Sudoku-Python
 
+[![Python 3.6](https://img.shields.io/badge/python-3.4+-blue.svg)](https://www.python.org/downloads/release/python)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-3498db.svg)](https://www.python.org/)
 <!-- [![release](https://badge.fury.io/gh/BGZ30%2FSudoku-Python%2Freleases%2Fv2.0.svg)](http://badge.fury.io/gh/BGZ30%2FSudoku-Python) -->
-
-
-
+[![GitHub tag](https://img.shields.io/github/tag/BGZ30/Sudoku-Python.js.svg)](https://GitHub.com/BGZ30/Sudoku-Python.js/tags/)
 This is a Sudoku game built using the Backtracking algorithm. It includes a GUI and can be played automatically by the computer or manully by the user.
 
 Run main.py to play Sudoku.
 
 # Requirements 🛠️
 
-- Python 3.x
+- Python 3.4+
 - Pygame 
 
 # How to play 🎮
