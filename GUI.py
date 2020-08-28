@@ -1,6 +1,6 @@
 # GUI.py
 import pygame
-from solve_sudoku import solve_sudoku, is_valid
+from solve_sudoku import solve_sudoku, is_valid, find_cell
 import time
 from init_board import build_board
 
@@ -8,7 +8,7 @@ from init_board import build_board
 class Board:
     board = build_board()
 
-    def __init__(self, width, height):
+    def __init__(self, width, height, win):
         self.rows = 9
         self.cols = 9
         self.cells = [[Cell(self.board[r][c], r, c, width, height) for c in range(9)] for r in range(9)]
@@ -16,6 +16,7 @@ class Board:
         self.height = height
         self.model = None
         self.selected = None
+        self.win = win
 
     def update_model(self):
         self.model = [[self.cells[r][c].value for c in range(self.cols)] for r in range(self.rows)]
@@ -38,7 +39,7 @@ class Board:
         row, col = self.selected
         self.cells[row][col].set_temp(val)
 
-    def draw(self, win):
+    def draw(self):
         # Draw Grid Lines
         gap = self.width / 9
         for i in range(self.rows+1):
@@ -46,13 +47,13 @@ class Board:
                 thick = 4
             else:
                 thick = 1
-            pygame.draw.line(win, (0,0,0), (0, i*gap), (self.width, i*gap), thick)
-            pygame.draw.line(win, (0, 0, 0), (i * gap, 0), (i * gap, self.height), thick)
+            pygame.draw.line(self.win, (0,0,0), (0, i*gap), (self.width, i*gap), thick)
+            pygame.draw.line(self.win, (0, 0, 0), (i * gap, 0), (i * gap, self.height), thick)
 
         # Draw Cells
         for i in range(self.rows):
             for j in range(self.cols):
-                self.cells[i][j].draw(win)
+                self.cells[i][j].draw(self.win)
 
     def select(self, row, col):
         # Reset all other
@@ -87,6 +88,36 @@ class Board:
                 if self.cells[i][j].value == 0:
                     return False
         return True
+        
+    
+    def auto_solve(self):
+        self.update_model()
+        find = find_cell(self.model)
+        if not find:
+            return True
+        else:
+            row, col = find
+
+        for i in range(1, 10):
+            if is_valid(self.model, i, (row, col)):
+                self.model[row][col] = i
+                self.cells[row][col].set(i)
+                self.cells[row][col].draw_change(self.win, True)
+                self.update_model()
+                pygame.display.update()
+                #pygame.time.delay(100)
+
+                if self.auto_solve():
+                    return True
+
+                self.model[row][col] = 0
+                self.cells[row][col].set(0)
+                self.update_model()
+                self.cells[row][col].draw_change(self.win, False)
+                pygame.display.update()
+                #pygame.time.delay(100)
+
+        return False
 
 
 class Cell:
@@ -120,6 +151,25 @@ class Cell:
             # draw a red boarder around the selected cell with width = 3
             pygame.draw.rect(win, (255,0,0), (x,y, gap ,gap), 3)  
             
+    
+    # for auto-solve
+    def draw_change(self, win, g=True):
+        fnt = pygame.font.SysFont("comicsans", 40)
+
+        gap = self.width / 9
+        x = self.col * gap
+        y = self.row * gap
+
+        pygame.draw.rect(win, (255, 255, 255), (x, y, gap, gap), 0)
+
+        text = fnt.render(str(self.value), 1, (0, 0, 0))
+        win.blit(text, (x + (gap / 2 - text.get_width() / 2), y + (gap / 2 - text.get_height() / 2)))
+        if g:
+            pygame.draw.rect(win, (0, 255, 0), (x, y, gap, gap), 3)
+        else:
+            pygame.draw.rect(win, (255, 0, 0), (x, y, gap, gap), 3)
+    
+    
     def set(self, val):
         self.value = val
 
@@ -140,7 +190,7 @@ def redraw_window(win, board, time, strikes):
     win.blit(text, (20, 560))
     
     # Draw grid and board
-    board.draw(win)
+    board.draw()
 
 
 def format_time(secs):
